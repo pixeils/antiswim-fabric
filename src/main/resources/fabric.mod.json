@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "antiswim",
+  "version": "${version}",
+  "name": "Antiswim",
+  "description": "",
+  "authors": [
+    "Pixeils"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/antiswim/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "net.pixeils.antiswim.client.AntiSwim"
+    ]
+  },
+  "mixins": [
+    "antiswim.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.11.2",
+    "fabric": "*",
+    "minecraft": "1.16.*",
+    "fabric-key-binding-api-v1": "*",
+    "fabric-lifecycle-events-v1": "*"
+  }
+}
