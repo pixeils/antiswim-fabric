@@ -7,3 +7,5 @@ If you are in Swim Mode and enable AntiSwim you will stay in Swim Mode.
 
 
 This is useful for digging underwater ect.
+
+Requires Fabric API and currently only works on singleplayer oops :O
