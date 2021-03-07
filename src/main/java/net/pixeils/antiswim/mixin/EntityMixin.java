@@ -14,5 +14,6 @@ public class EntityMixin {
     public void setSwimming(CallbackInfo ci) {
         if (!AntiSwim.antiswim)
             ci.cancel();
+
     }
 }

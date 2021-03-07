@@ -5,17 +5,21 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.options.KeyBinding;
 import net.minecraft.client.util.InputUtil;
+import net.minecraft.network.MessageType;
+import net.minecraft.text.Text;
 import org.lwjgl.glfw.GLFW;
+
+import java.util.UUID;
 
 public class AntiSwim implements ClientModInitializer {
     public static boolean antiswim = true;
     public void onInitializeClient() {
-        KeyBinding toggleAntiSwim = KeyBindingHelper.registerKeyBinding(new KeyBinding("AntiSwim", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_RIGHT_BRACKET,"Pixeils Mod"));
+        KeyBinding toggleAntiSwim = KeyBindingHelper.registerKeyBinding(new KeyBinding("AntiSwim", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_RIGHT_BRACKET,"Pixeils' Mod"));
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            while(toggleAntiSwim.wasPressed())
+            if (toggleAntiSwim.wasPressed()){
                 antiswim = !antiswim;
-
-
+                client.inGameHud.addChatMessage(MessageType.SYSTEM, Text.of("Toggled AntiSwim"), client.player.getUuid());
+                }
         });
     }
 }
