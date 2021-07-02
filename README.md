@@ -11,4 +11,8 @@ however you will not be able to sprint.
 
 This is useful for digging underwater ect.
 
+<<<<<<< HEAD
 Requires Fabric API.
+=======
+Requires Fabric API.
+>>>>>>> 161938a8c01fd82a008a9fba93e3660747ea2bc7
