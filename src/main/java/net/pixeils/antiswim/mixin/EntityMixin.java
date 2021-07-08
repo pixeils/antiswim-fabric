@@ -8,7 +8,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-
 @Mixin(Entity.class)
 public abstract class EntityMixin {
 
@@ -25,9 +24,11 @@ public abstract class EntityMixin {
 @Mixin(Entity.class)
 public class EntityMixin {
 
-    @Inject(method = "setSwimming",at = @At("HEAD"),cancellable = true)
-    public void setSwimming(CallbackInfo ci) {
-        if (!AntiSwim.antiswim)
+    @Shadow public abstract boolean isSubmergedInWater();
+
+    @Inject(method = "setSprinting",at = @At("HEAD"),cancellable = true)
+    public void setSprinting(CallbackInfo ci) {
+        if (!AntiSwim.antiswim && isSubmergedInWater())
             ci.cancel();
 
     }

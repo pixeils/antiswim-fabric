@@ -14,10 +14,13 @@ public class AntiSwim implements ClientModInitializer {
     public void onInitializeClient() {
         KeyBinding toggleAntiSwim = KeyBindingHelper.registerKeyBinding(new KeyBinding("AntiSwim", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_RIGHT_BRACKET,"Pixeils' Mod"));
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            if (toggleAntiSwim.wasPressed()){
+            if (toggleAntiSwim.wasPressed()) {
                 antiswim = !antiswim;
-                client.inGameHud.addChatMessage(MessageType.SYSTEM, Text.of("Toggled AntiSwim"), client.player.getUuid());
-                }
+                if (antiswim) {
+                    client.inGameHud.addChatMessage(MessageType.SYSTEM, Text.of("AntiSwim Off"), client.player.getUuid());
+                } else
+                    client.inGameHud.addChatMessage(MessageType.SYSTEM, Text.of("AntiSwim On"), client.player.getUuid());
+            }
         });
     }
 }
